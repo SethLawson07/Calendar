@@ -1,0 +1,65 @@
+{
+    "cours": [
+      {
+        "jour": "Lundi",
+        "heures": [
+          {
+            "heure": "7:00",
+            "nom": "Yoga",
+            "price": 50.0
+          },
+          {
+            "heure": "8:00",
+            "nom": "Pilates",
+            "price": 50.0
+          },
+          {
+            "heure": "9:00",
+            "nom": "Cardio",
+            "price": 50.0
+          }
+        ]
+      },
+      {
+        "jour": "Mardi",
+        "heures": [
+          {
+            "heure": "7:00",
+            "nom": "Crossfit",
+            "price": 50.0
+          },
+          {
+            "heure": "8:00",
+            "nom": "Yoga",
+            "price": 50.0
+          },
+          {
+            "heure": "9:00",
+            "nom": "Pilates",
+            "price": 50.0
+          }
+        ]
+      },
+      {
+        "jour": "Mercredi",
+        "heures": [
+          {
+            "heure": "7:00",
+            "nom": "Cardio",
+            "price": 50.0
+          },
+          {
+            "heure": "8:00",
+            "nom": "Crossfit",
+            "price": 50.0
+          },
+          {
+            "heure": "9:00",
+            "nom": "Yoga",
+            "price": 50.0
+          }
+        ]
+      }
+    ]
+  }
+  
