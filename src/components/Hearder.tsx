@@ -1,6 +1,6 @@
 import {Container,Nav,Navbar,Button} from 'react-bootstrap';
 
-function Header() {
+function Header({totalPrice}) {
   return (  
   <Container fluid>
     <Navbar bg="link" expand="lg" >
@@ -12,6 +12,7 @@ function Header() {
             <Nav.Link href="#" className='text-dark fs-5'>4 déc. 2022 - 19 jan. 2023</Nav.Link>
         </Nav>
         <Nav className="ms-auto">
+          <Nav.Link href="#" className='text-dark fs-5'>Prix Total des cours : {totalPrice}</Nav.Link>
           <Button style={{backgroundColor: '#0c2461'}} className='fw-bold'>S'rinscrire</Button>{' '}
             
         </Nav>

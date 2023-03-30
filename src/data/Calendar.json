@@ -1,65 +1,197 @@
 {
-    "cours": [
-      {
-        "jour": "Lundi",
-        "heures": [
-          {
-            "heure": "7:00",
-            "nom": "Yoga",
-            "price": 50.0
-          },
-          {
-            "heure": "8:00",
-            "nom": "Pilates",
-            "price": 50.0
-          },
-          {
-            "heure": "9:00",
-            "nom": "Cardio",
-            "price": 50.0
-          }
-        ]
-      },
-      {
-        "jour": "Mardi",
-        "heures": [
-          {
-            "heure": "7:00",
-            "nom": "Crossfit",
-            "price": 50.0
-          },
-          {
-            "heure": "8:00",
-            "nom": "Yoga",
-            "price": 50.0
-          },
-          {
-            "heure": "9:00",
-            "nom": "Pilates",
-            "price": 50.0
-          }
-        ]
-      },
-      {
-        "jour": "Mercredi",
-        "heures": [
-          {
-            "heure": "7:00",
-            "nom": "Cardio",
-            "price": 50.0
-          },
-          {
-            "heure": "8:00",
-            "nom": "Crossfit",
-            "price": 50.0
-          },
-          {
-            "heure": "9:00",
-            "nom": "Yoga",
-            "price": 50.0
-          }
-        ]
-      }
-    ]
-  }
-  
+  "jours": [
+    {
+      "nom": "Lundi",
+      "cours": [
+        {
+          "heure": "18:10",
+          "matieres": [
+            {
+              "id":1,
+              "nom": "Mathématiques",
+              "prix": 15
+            },
+            {
+              "id":2,
+              "nom": "Physique",
+              "prix": 20
+            }
+          ]
+        },
+        {
+          "heure": "19:15",
+          "matieres": [
+            {
+              "id":3,
+              "nom": "Français",
+              "prix": 10
+            },
+            {
+              "id":4,
+              "nom": "Histoire",
+              "prix": 12
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "nom": "Mardi",
+      "cours": [
+        {
+          "heure": "18:10",
+          "matieres": [
+            {
+              "id":5,
+              "nom": "Anglais",
+              "prix": 8
+            },
+            {
+              "id":6,
+              "nom": "Espagnol",
+              "prix": 9
+            },
+            {
+              "id":7,
+              "nom": "Chimie",
+              "prix": 18
+            }
+          ]
+        },
+        {
+          "heure": "19:15",
+          "matieres": [
+            {
+              "id":8,
+              "nom": "Biologie",
+              "prix": 22
+            },
+            {
+              "id":9,
+              "nom": "Géographie",
+              "prix": 11
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "nom": "Mercredi",
+      "cours": [
+        {
+          "heure": "18:10",
+          "matieres": [
+            {
+              "id":10,
+              "nom": "Anglais",
+              "prix": 8
+            },
+            {
+              "id":11,
+              "nom": "Espagnol",
+              "prix": 9
+            },
+            {
+              "id":12,
+              "nom": "Chimie",
+              "prix": 18
+            }
+          ]
+        },
+        {
+          "heure": "19:15",
+          "matieres": [
+            {
+              "id":13,
+              "nom": "Biologie",
+              "prix": 22
+            },
+            {
+              "id":14,
+              "nom": "Géographie",
+              "prix": 11
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "nom": "Jeudi",
+      "cours": [
+        {
+          "heure": "18:10",
+          "matieres": [
+            {
+              "id":15,
+              "nom": "Anglais",
+              "prix": 8
+            },
+            {
+              "id":16,
+              "nom": "Espagnol",
+              "prix": 9
+            },
+            {
+              "id":17,
+              "nom": "Chimie",
+              "prix": 18
+            }
+          ]
+        },
+        {
+          "heure": "19:15",
+          "matieres": [
+            {
+              "id":18,
+              "nom": "Biologie",
+              "prix": 22
+            },
+            {
+              "id":19,
+              "nom": "Géographie",
+              "prix": 11
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "nom": "Vendredi",
+      "cours": [
+     
+      ]
+    },
+    {
+      "nom": "Samedi",
+      "cours": [
+    
+      ]
+    },
+    {
+      "nom": "Dimanche",
+      "cours": [
+        {
+          "heure": "18:10",
+          "matieres": [
+           
+            {
+              "id":28,
+              "nom": "Chimie",
+              "prix": 18
+            }
+          ]
+        },
+        {
+          "heure": "19:15",
+          "matieres": [
+            {
+              "id":29,
+              "nom": "Géographie",
+              "prix": 11
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}
