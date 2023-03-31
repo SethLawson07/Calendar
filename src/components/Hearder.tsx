@@ -1,6 +1,8 @@
 import {Container,Nav,Navbar,Button} from 'react-bootstrap';
+import * as Icon from 'react-bootstrap-icons'
 
-function Header({totalPrice}) {
+
+function Header({totalPrice,show}) {
   return (  
   <Container fluid>
     <Navbar bg="link" expand="lg" >
@@ -13,8 +15,11 @@ function Header({totalPrice}) {
         </Nav>
         <Nav className="ms-auto">
           <Nav.Link href="#" className=' fs-5 text-secondary'>Montant total : {totalPrice}</Nav.Link>
-          <Button style={{backgroundColor: '#0c2461'}} className='fw-bold'>S'rinscrire</Button>{' '}
-            
+          {show ? <Button style={{backgroundColor: '#0c2461'}} className='fw-bold'>S'rinscrire</Button> :
+          <Button style={{backgroundColor: '#0c2461'}} disabled className='fw-bold'>S'rinscrire</Button>
+          
+          }
+           
         </Nav>
         </Navbar.Collapse>
      
