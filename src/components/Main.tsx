@@ -6,6 +6,7 @@ import data from "../data/Calendar.json";
 import { useDispatch, useSelector } from 'react-redux';
 import { addCourse, deleteCourse } from "../features/course/CourseSlice";
 import type { RootState } from '../app/store'
+import { ToastContainer, toast } from 'react-toastify';
 
 export default function Main() {
 
@@ -15,7 +16,10 @@ export default function Main() {
   const [selectedMatieres, setSelectedMatieres] = useState([]);
   const [totalPrice, setTotalPrice] = useState(0);
 
+
+
   const onMatiereClick = (matiere) => {
+    
     let updatedMatieres = [...selectedMatieres];
     let updatedTotalPrice = totalPrice;
 
@@ -34,8 +38,16 @@ export default function Main() {
 
     if (index === -1) {
       dispatch(addCourse({ id: matiere.id, name: matiere.nom, price: matiere.prix }));
+        toast.success(matiere.nom+" course successfully added", {
+          position: "top-center",
+       
+        });
     } else {
       dispatch(deleteCourse(matiere.id));
+      toast.info(matiere.nom+" course successfully canceled", {
+        position: "top-center",
+     
+      });
     }
   };
 
@@ -47,6 +59,7 @@ export default function Main() {
 
   return <>
     <Container fluid >
+      <ToastContainer/>
       <Header totalPrice={totalPrice} />
 
       <Table striped bordered hover responsive size="sm" className="my-5">
@@ -54,7 +67,7 @@ export default function Main() {
           <tr className="fs-3">
             <th>Horaires</th>
             {data.jours.map((jour) => (
-              <th key={jour.nom}>{jour.nom}</th>
+              <th key={jour.nom} className="text-center font-monospace">{jour.nom}</th>
             ))}
           </tr>
         </thead>
@@ -75,7 +88,7 @@ export default function Main() {
                             onClick={() => onMatiereClick(matiere)}
                             style={{ color: matiereIsSelected(matiere) ? 'white' : '', minWidth: '150px' }}
                           >
-                            {matiere.nom}
+                            <span className="fw-semibold ">{matiere.nom}</span> : <span className=" font-monospace text-secondary">{matiere.prix} USD </span>
                           </Button>
                         ))}
                       </div>
@@ -91,12 +104,14 @@ export default function Main() {
       </Table>
 
       <Footer />
-
+          
       {courses.map(course => (
         <li key={course.id}>
           {course.name} - ${course.price}
         </li>
       ))}
+
+
 
     </Container>
 

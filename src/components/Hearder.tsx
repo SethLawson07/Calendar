@@ -12,7 +12,7 @@ function Header({totalPrice}) {
             <Nav.Link href="#" className='text-dark fs-5'>4 déc. 2022 - 19 jan. 2023</Nav.Link>
         </Nav>
         <Nav className="ms-auto">
-          <Nav.Link href="#" className='text-dark fs-5'>Prix Total des cours : {totalPrice}</Nav.Link>
+          <Nav.Link href="#" className=' fs-5 text-secondary'>Montant total : {totalPrice}</Nav.Link>
           <Button style={{backgroundColor: '#0c2461'}} className='fw-bold'>S'rinscrire</Button>{' '}
             
         </Nav>
