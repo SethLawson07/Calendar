@@ -14,75 +14,57 @@ export default function Main() {
   const courses = useSelector((state: RootState) => state.course.courses)
 
   const [selectedMatieres, setSelectedMatieres] = useState({});
-  const [totalPrice, setTotalPrice] = useState(0);
+  var [totalPrice, setTotalPrice] = useState(0);
   const [show, setShow] = useState(false);
-
-  
-  
  
+  const remove = (matiere) =>{
+    dispatch(deleteCourse(matiere.id));
+    toast.info(matiere.nom+" course successfully canceled.", {
+      position: "top-center",
+   
+    });
+  }
 
-  const onMatiereClick = (matiere, jour, heure) => {
-    let updatedTotalPrice = totalPrice;
-    const heureKey = `${jour}_${heure}`;
-  
-    const selectedMatieresForHeure = selectedMatieres[heureKey] || [];
-    if (selectedMatieresForHeure.length > 0 && !selectedMatieresForHeure.some(m => m.id === matiere.id)) {
-      toast.error("une autre matière a déjà été sélectionnée pour cette heure.",
-      {position:"top-center"})
-      return;
-    }
-  
-    const updatedMatieres = {...selectedMatieres};
-    const index = selectedMatieresForHeure.findIndex(m => m.id === matiere.id);
-    if (index !== -1) {
-      selectedMatieresForHeure.splice(index, 1);
-      updatedTotalPrice -= matiere.prix;
-    } else {
-      selectedMatieresForHeure.push(matiere);
-      updatedTotalPrice += matiere.prix;
-    }
-    updatedMatieres[heureKey] = selectedMatieresForHeure;
-    setSelectedMatieres(updatedMatieres);
-  
-    // le reste de votre code...
-    setSelectedMatieres(updatedMatieres);
-    setTotalPrice(updatedTotalPrice);
-
-    if (index === -1) {
-      dispatch(addCourse({ id: matiere.id, name: matiere.nom, price: matiere.prix }));
-        toast.success(matiere.nom+" course successfully added.", {
-          position: "top-center",
-       
-        });
-    } else {
-      dispatch(deleteCourse(matiere.id));
-      toast.info(matiere.nom+" course successfully canceled.", {
-        position: "top-center",
-     
-      });
-    }
-  };
-
-  const EnableButton = () => {
-    if (Object.keys(selectedMatieres).length === 0) {
-      setShow(false)
-    } else {
-      setShow(false)
-    }
-  } 
-
-  useEffect(() => {
-    EnableButton()
-  }, []);
-  
-  
+  const add = (matiere) =>{
+    dispatch(addCourse({ id: matiere.id, name: matiere.nom, price: matiere.prix }));
+    toast.success(matiere.nom+" course successfully added.", {
+      position: "top-center",
+   
+    });
+  }
 
   const matiereIsSelected = (matiere, jour, heure) => {
     const heureKey = `${jour}_${heure}`;
     return (selectedMatieres[heureKey] || []).some(m => m.id === matiere.id);
   };
-  
 
+  const onMatiereClick = (matiere, jour, heure) => {
+    const heureKey = `${jour}_${heure}`;
+    const updatedMatieres = {...selectedMatieres};
+    const selectedMatieresForHeure = selectedMatieres[heureKey] || [];
+    const index = selectedMatieresForHeure.findIndex(m => m.id === matiere.id);
+    
+    if (selectedMatieresForHeure.length > 0 && !selectedMatieresForHeure.some(m => m.id === matiere.id)) {
+      toast.error("une autre matière a déjà été sélectionnée pour cette heure.", {position:"top-center"})
+      return; }
+     
+    if (index !== -1) {
+      selectedMatieresForHeure.splice(index, 1);
+      totalPrice -= matiere.prix;
+    } else {
+      selectedMatieresForHeure.push(matiere);
+      totalPrice += matiere.prix;
+    }
+
+    updatedMatieres[heureKey] = selectedMatieresForHeure;
+    setSelectedMatieres(updatedMatieres);
+    setTotalPrice(totalPrice);
+    index === -1 ? add(matiere) : remove(matiere)
+   
+  };
+
+  
+  
   
   return <>
     <Container fluid >

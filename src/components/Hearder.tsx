@@ -14,7 +14,7 @@ function Header({totalPrice,show}) {
             <Nav.Link href="#" className='text-dark fs-5'>4 déc. 2022 - 19 jan. 2023</Nav.Link>
         </Nav>
         <Nav className="ms-auto">
-          <Nav.Link href="#" className=' fs-5 text-secondary'>Montant total : {totalPrice}</Nav.Link>
+          <Nav.Link href="#" className=' fs-5 text-secondary'>Montant total : {totalPrice} USD</Nav.Link>
           {show ? <Button style={{backgroundColor: '#0c2461'}} className='fw-bold'>S'rinscrire</Button> :
           <Button style={{backgroundColor: '#0c2461'}} disabled className='fw-bold'>S'rinscrire</Button>
           
