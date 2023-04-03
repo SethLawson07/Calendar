@@ -13,11 +13,11 @@ export default function Main() {
   const dispatch = useDispatch();
   const courses = useSelector((state: RootState) => state.course.courses)
 
-  const [selectedMatieres, setSelectedMatieres] = useState<any>({});
+  const [selectedMatieres, setSelectedMatieres] = useState({});
   var [totalPrice, setTotalPrice] = useState(0);
   const [show, setShow] = useState(false);
  
-  const remove = (matiere: { id: any; nom: string; }) =>{
+  const remove = (matiere) =>{
     dispatch(deleteCourse(matiere.id));
     toast.info(matiere.nom+" course successfully canceled.", {
       position: "top-center",
@@ -25,7 +25,7 @@ export default function Main() {
     });
   }
 
-  const add = (matiere: { id: any; nom: string; prix: any; }) =>{
+  const add = (matiere) =>{
     dispatch(addCourse({ id: matiere.id, name: matiere.nom, price: matiere.prix }));
     toast.success(matiere.nom+" course successfully added.", {
       position: "top-center",
@@ -33,21 +33,22 @@ export default function Main() {
     });
   }
 
-  const matiereIsSelected = (matiere: { id: any; nom?: string; prix?: number; }, jour: string, heure: string) => {
+  const matiereIsSelected = (matiere, jour, heure) => {
     const heureKey = `${jour}_${heure}`;
-    return (selectedMatieres[heureKey] || []).some((m: { id: any; }) => m.id === matiere.id);
+    return (selectedMatieres[heureKey] || []).some(m => m.id === matiere.id);
   };
 
-  const onMatiereClick = (matiere: { id: any; nom?: string; prix?: any; }, jour: string, heure: string) => {
+  const onMatiereClick = (matiere, jour, heure) => {
     const heureKey = `${jour}_${heure}`;
     const updatedMatieres = {...selectedMatieres};
     const selectedMatieresForHeure = selectedMatieres[heureKey] || [];
-    const index = selectedMatieresForHeure.findIndex((m: { id: any; }) => m.id === matiere.id);
+    const index = selectedMatieresForHeure.findIndex(m => m.id === matiere.id);
     
-    if (selectedMatieresForHeure.length > 0 && !selectedMatieresForHeure.some((m: { id: any; }) => m.id === matiere.id)) {
+    if (selectedMatieresForHeure.length > 0 && !selectedMatieresForHeure.some(m => m.id === matiere.id)) {
       toast.error("une autre matière a déjà été sélectionnée pour cette heure.", {position:"top-center"})
       return; }
      
+
     if (index !== -1) {
       selectedMatieresForHeure.splice(index, 1);
       totalPrice -= matiere.prix;
