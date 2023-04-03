@@ -16,7 +16,11 @@ export default function Main() {
   const [selectedMatieres, setSelectedMatieres] = useState({});
   var [totalPrice, setTotalPrice] = useState(0);
   const [show, setShow] = useState(false);
- 
+
+/**
+  * Removes a course and displays a success message.
+  * @param {Object} matiere - The course to be removed.
+  */
   const remove = (matiere) =>{
     dispatch(deleteCourse(matiere.id));
     toast.info(matiere.nom+" course successfully canceled.", {
@@ -25,6 +29,10 @@ export default function Main() {
     });
   }
 
+ /**
+  * Add course and show success toast.
+  * @param {Object} matiere - Course object {id, nom, prix}.
+  */
   const add = (matiere) =>{
     dispatch(addCourse({ id: matiere.id, name: matiere.nom, price: matiere.prix }));
     toast.success(matiere.nom+" course successfully added.", {
@@ -33,11 +41,24 @@ export default function Main() {
     });
   }
 
-  const matiereIsSelected = (matiere, jour, heure) => {
+  /** Check if a subject is selected for a given day and time.
+   * @param {Object} matiere - The subject to check
+   * @param {string} jour - The day to check (formatted as 'YYYY-MM-DD')
+   * @param {string} heure - The time to check (formatted as 'HH:mm')
+   * @returns {boolean} - Returns true if the subject is selected, false otherwise
+   */
+   const matiereIsSelected = (matiere, jour, heure) => {
     const heureKey = `${jour}_${heure}`;
     return (selectedMatieres[heureKey] || []).some(m => m.id === matiere.id);
   };
 
+  /**
+   * Updates the selected matieres for a given jour and heure.
+   * @param {object} matiere - The selected matiere.
+   * @param {string} jour - The selected jour.
+   * @param {string} heure - The selected heure.
+   * @returns {void}
+   */
   const onMatiereClick = (matiere, jour, heure) => {
     const heureKey = `${jour}_${heure}`;
     const updatedMatieres = {...selectedMatieres};
