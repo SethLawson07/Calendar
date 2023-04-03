@@ -2,7 +2,7 @@ import {Container,Nav,Navbar,Button} from 'react-bootstrap';
 import * as Icon from 'react-bootstrap-icons'
 
 
-function Header({totalPrice,show}) {
+function Header({totalPrice,show}:any) {
   return (  
   <Container fluid>
     <Navbar bg="link" expand="lg" >
