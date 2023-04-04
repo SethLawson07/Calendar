@@ -28,7 +28,7 @@ export default function Main() {
     }
   };
 
-console.log(data);
+
 
 /**
   * Removes a course and displays a success message.

@@ -26,7 +26,7 @@ export default function Login() {
         setValidated(true);
       
         if (isValid) {
-          navigate('/home')
+          navigate('/Calendar/home')
         }
     };
   return (
