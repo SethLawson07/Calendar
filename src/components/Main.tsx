@@ -2,7 +2,6 @@ import React, { useEffect, useState } from "react";
 import Header from "./Hearder";
 import Footer from "./Footer";
 import { Table, Container, Button } from 'react-bootstrap';
-import data from "../data/Calendar.json";
 import { useDispatch, useSelector } from 'react-redux';
 import { addCourse, deleteCourse } from "../features/course/CourseSlice";
 import type { RootState } from '../app/store'
@@ -10,12 +9,25 @@ import { ToastContainer, toast } from 'react-toastify';
 
 export default function Main() {
 
+  const [data, setData] = useState(null);
   const dispatch = useDispatch();
   const courses = useSelector((state: RootState) => state.course.courses)
-
   const [selectedMatieres, setSelectedMatieres] = useState({});
   var [totalPrice, setTotalPrice] = useState(0);
   const [show, setShow] = useState(false);
+  
+
+  
+  const fetchCalendarData = async () => {
+    try {
+      const response = await fetch("./src/data/Calendar.json");
+      const jsonData = await response.json();
+      setData(jsonData);
+    } catch (error) {
+      console.error(error);
+    }
+  };
+
 
 /**
   * Removes a course and displays a success message.
@@ -85,20 +97,30 @@ export default function Main() {
    
   };
 
-  
-  
-  
+  useEffect(() => {
+    fetchCalendarData();
+  }, []);
+
+
+  if(!data){
+    return <p>Loading....</p>
+  }
   return <>
     <Container fluid >
       <ToastContainer/>
       <Header totalPrice={totalPrice} show={show}/>
 
       <Table striped bordered hover responsive size="sm" className="my-5">
-        <thead style={{ backgroundColor: '#0c2461', color: 'white' }}>
+        <thead style={{ backgroundColor: "#0c2461", color: "white" }}>
           <tr className="fs-3">
             <th>Horaires</th>
             {data.jours.map((jour) => (
-              <th key={jour.nom} className="text-center font-monospace">{jour.nom}</th>
+              <th
+                key={jour.nom}
+                className="text-center font-monospace"
+              >
+                {jour.nom}
+              </th>
             ))}
           </tr>
         </thead>
@@ -107,20 +129,51 @@ export default function Main() {
             <tr key={index}>
               <td>{cours.heure}</td>
               {data.jours.map((jour) => {
-                const matieres = jour.cours.find((c) => c.heure === cours.heure)?.matieres;
+                const matieres = jour.cours.find(
+                  (c) => c.heure === cours.heure
+                )?.matieres;
                 return (
                   <td key={jour.nom}>
                     {matieres ? (
                       <div>
                         {matieres.map((matiere) => (
-                        <Button
-                        key={matiere.id}
-                        variant={matiereIsSelected(matiere, jour.nom, cours.heure) ? "danger" : "Light"}
-                        onClick={() => onMatiereClick(matiere, jour.nom, cours.heure)}
-                        style={{ color: matiereIsSelected(matiere, jour.nom, cours.heure) ? 'white' : '', minWidth: '150px' }}
-                      >
-                      
-                            <span className="fw-semibold ">{matiere.nom}</span> : <span className=" font-monospace text-secondary">{matiere.prix} USD </span>
+                          <Button
+                            key={matiere.id}
+                            className="my-1"
+                            variant={
+                              matiereIsSelected(
+                                matiere,
+                                jour.nom,
+                                cours.heure
+                              )
+                                ? "danger"
+                                : "light"
+                            }
+                            onClick={() =>
+                              onMatiereClick(
+                                matiere,
+                                jour.nom,
+                                cours.heure
+                              )
+                            }
+                            style={{
+                              color: matiereIsSelected(
+                                matiere,
+                                jour.nom,
+                                cours.heure
+                              )
+                                ? "white"
+                                : "",
+                              minWidth: "150px",
+                            }}
+                          >
+                            <span className="fw-semibold ">
+                              {matiere.nom}
+                            </span>{" "}
+                            :{" "}
+                            <span className=" font-monospace text-secondary">
+                              {matiere.prix} USD{" "}
+                            </span>
                           </Button>
                         ))}
                       </div>
