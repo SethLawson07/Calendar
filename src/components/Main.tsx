@@ -24,10 +24,11 @@ export default function Main() {
       const jsonData = await response.json();
       setData(jsonData);
     } catch (error) {
-      console.error(error);
+      console.error("oklm"+error);
     }
   };
 
+console.log(data);
 
 /**
   * Removes a course and displays a success message.
@@ -98,13 +99,14 @@ export default function Main() {
   };
 
   useEffect(() => {
-    fetchCalendarData();
+    fetchCalendarData()
+  
   }, []);
 
-
-  if(!data){
-    return <p>Loading....</p>
-  }
+    if(!data){
+    return <p>loading ...</p>
+    }
+    
   return <>
     <Container fluid >
       <ToastContainer/>
