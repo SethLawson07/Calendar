@@ -1,0 +1,227 @@
+{
+  "jours": [
+    {
+      "nom": "Lundi",
+      "cours": [
+        {
+          "heure": "18:10",
+          "matieres": [
+            
+          ]
+        },
+        {
+          "heure": "19:15",
+          "matieres": [
+           
+          ]
+        },
+        {
+          "heure": "20:25",
+          "matieres": [
+
+          ]
+        }
+      ]
+    },
+
+    {
+      "nom": "Mardi",
+      "cours": [
+        {
+          "heure": "18:10",
+          "matieres": [
+            {
+              "id":1,
+              "nom": "Salsa 1",
+              "prix": 15
+            },
+            {
+              "id":2,
+              "nom": "Kiz1",
+              "prix": 20
+            },
+            {
+              "id":3,
+              "nom": "Salsa 4",
+              "prix": 20
+            }
+          ]
+        },
+        {
+          "heure": "19:15",
+          "matieres": [
+            {
+              "id":4,
+              "nom": "Kiz 2",
+              "prix": 10
+            },
+            {
+              "id":5,
+              "nom": "Ruead3",
+              "prix": 12
+            },
+            {
+              "id":6,
+              "nom": "Ruead4",
+              "prix": 17
+            }
+          ]
+        },
+        {
+          "heure": "20:25",
+          "matieres": [
+            {
+              "id":7,
+              "nom": "urban kiz",
+              "prix": 10
+            },
+            {
+              "id":8,
+              "nom": "Salsa 3",
+              "prix": 12
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "nom": "Mercredi",
+      "cours": [
+        {
+          "heure": "18:10",
+          "matieres": [
+            {
+              "id":9,
+              "nom": "Bachata1",
+              "prix": 18
+            },
+            {
+              "id":10,
+              "nom": "Rueda1",
+              "prix": 9
+            },
+            {
+              "id":11,
+              "nom": "Ruead2",
+              "prix": 18
+            }
+          ]
+        },
+        {
+          "heure": "19:15",
+          "matieres": [
+            {
+              "id":12,
+              "nom": "Bachata2",
+              "prix": 22
+            },
+            {
+              "id":13,
+              "nom": "Salsa 3",
+              "prix": 14
+            },
+            {
+              "id":14,
+              "nom": "Salsa 1",
+              "prix": 11
+            }
+          ]
+        },
+        {
+          "heure": "20:25",
+          "matieres": [
+            {
+              "id":15,
+              "nom": "Ruead3",
+              "prix": 22
+            }
+          ]
+        }
+      ]
+    },
+   
+    {
+      "nom": "Jeudi",
+      "cours": [
+        {
+          "heure": "18:10",
+          "matieres": [
+            {
+              "id":16,
+              "nom": "Salsa 1",
+              "prix": 8
+            },
+            {
+              "id":17,
+              "nom": "Ruead2",
+              "prix": 9
+            },
+            {
+              "id":18,
+              "nom": "Bachata3",
+              "prix": 18
+            }
+          ]
+        },
+        {
+          "heure": "19:15",
+          "matieres": [
+            {
+              "id":19,
+              "nom": "Salsa 2",
+              "prix": 22
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "nom": "Vendredi",
+      "cours": [
+     
+      ]
+    },
+    {
+      "nom": "Samedi",
+      "cours": [
+    
+      ]
+    },
+    {
+      "nom": "Dimanche",
+      "cours": [
+        {
+          "heure": "18:10",
+          "matieres": [
+           
+            {
+              "id":20,
+              "nom": "Salsa 1",
+              "prix": 18
+            },
+            {
+              "id":21,
+              "nom": "Salsa 2",
+              "prix": 18
+            }
+          ]
+        },
+        {
+          "heure": "19:15",
+          "matieres": [
+            {
+              "id":22,
+              "nom": "Rueda1",
+              "prix": 11
+            },
+            {
+              "id":23,
+              "nom": "Bachata1",
+              "prix": 11
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}
