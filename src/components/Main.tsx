@@ -7,6 +7,7 @@ import { addCourse, deleteCourse } from "../features/course/CourseSlice";
 import type { RootState } from '../app/store'
 import { ToastContainer, toast } from 'react-toastify';
 
+
 export default function Main() {
 
   const [data, setData] = useState(null);
@@ -15,19 +16,6 @@ export default function Main() {
   const [selectedMatieres, setSelectedMatieres] = useState({});
   var [totalPrice, setTotalPrice] = useState(0);
   const [show, setShow] = useState(false);
-  
-
-  
-  const fetchCalendarData = async () => {
-    try {
-      const response = await fetch("./src/data/Calendar.json");
-      const jsonData = await response.json();
-      setData(jsonData);
-    } catch (error) {
-      console.error("oklm"+error);
-    }
-  };
-
 
 
 /**
@@ -98,14 +86,31 @@ export default function Main() {
    
   };
 
-  useEffect(() => {
-    fetchCalendarData()
-  
-  }, []);
-
-    if(!data){
-    return <p>loading ...</p>
+  const fetchData = async () => {
+    try {
+      const response = await fetch("./data/Calendar.json");
+      const jsonData = await response.json();
+      return jsonData;
+    } catch (error) {
+      console.error("Erreur lors de la récupération des données du calendrier", error);
+      return null;
     }
+  };
+  
+  useEffect(() => {
+    fetchData().then((jsonData) => {
+      if (jsonData) {
+        setData(jsonData);
+      }
+    });
+  }, []);
+  
+
+  if (!data) {
+    return <p>Loading data...</p>;
+  }
+
+   
     
   return <>
     <Container fluid >
