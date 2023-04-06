@@ -1,8 +1,11 @@
 import { configureStore } from '@reduxjs/toolkit'
 import CourseSlice from '../features/course/CourseSlice'
+import CalendarSlice from '../features/Calendar/CalendarSlice'
+
 export const store = configureStore({
   reducer: {
-    course:CourseSlice
+    course:CourseSlice,
+    calendar:CalendarSlice
   },
 })
 

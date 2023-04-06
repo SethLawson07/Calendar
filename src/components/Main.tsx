@@ -6,13 +6,14 @@ import { useDispatch, useSelector } from 'react-redux';
 import { addCourse, deleteCourse } from "../features/course/CourseSlice";
 import type { RootState } from '../app/store'
 import { ToastContainer, toast } from 'react-toastify';
-
+import { fetchData } from "../features/Calendar/CalendarSlice";
 
 export default function Main() {
 
-  const [data, setData] = useState(null);
+ // const [data, setData] = useState(null);
   const dispatch = useDispatch();
   const courses = useSelector((state: RootState) => state.course.courses)
+  const data = useSelector((state) => state.calendar.data);
   const [selectedMatieres, setSelectedMatieres] = useState({});
   var [totalPrice, setTotalPrice] = useState(0);
   const [show, setShow] = useState(false);
@@ -86,24 +87,12 @@ export default function Main() {
    
   };
 
-  const fetchData = async () => {
-    try {
-      const response = await fetch("./data/Calendar.json");
-      const jsonData = await response.json();
-      return jsonData;
-    } catch (error) {
-      console.error("Erreur lors de la récupération des données du calendrier", error);
-      return null;
-    }
-  };
+ 
   
   useEffect(() => {
-    fetchData().then((jsonData) => {
-      if (jsonData) {
-        setData(jsonData);
-      }
-    });
-  }, []);
+    dispatch(fetchData());
+  }, [dispatch]);
+
   
 
   if (!data) {
