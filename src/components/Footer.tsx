@@ -1,8 +1,9 @@
 import { useState } from 'react';
 import { Container, Form, Row, Col,Button } from 'react-bootstrap';
 import { ToastContainer, toast } from 'react-toastify';
+import logo from "../assets/images/logo1.jpg"
 
-export default function Footer() {
+function MainEnd() {
 
   const [submittedSuccessfully, setSubmittedSuccessfully] = useState(false);
   const [validated, setValidated] = useState<boolean>(false);
@@ -23,7 +24,7 @@ export default function Footer() {
 
 
   return (
-    <Container fluid >
+    <Container >
        <ToastContainer/>
       <Row  >
         <Col xs={12} md={4} className="text-white order-first my-2 " style={{ backgroundColor: '#0c2461' }}>
@@ -95,3 +96,25 @@ export default function Footer() {
     </Container>
   );
 }
+
+
+function Footer () {
+
+    return (
+      <Container fluid >
+      <Row style={{ backgroundColor: '#0c2461' }} >
+        <Col xs={12} md={4} className="text-white order-first my-2 pl-5 " >
+          <img src={logo} alt="Logo" width={200} height={200}/>
+          <hr style={{ width: 50, fontSize:15 }} />
+          <p className="fs-5">Dos Con Dos </p>
+        </Col>
+        <Col xs={12} md={8} className=" my-2 ">
+       
+        </Col>
+      </Row>
+      </Container>
+ )   
+}
+
+
+export {MainEnd,Footer}

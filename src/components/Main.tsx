@@ -1,12 +1,13 @@
 import React, { useEffect, useState } from "react";
-import Header from "./Hearder";
-import Footer from "./Footer";
+import {MainTop,Header }from "./Header";
+import {MainEnd,Footer} from "./Footer";
 import { Table, Container, Button } from 'react-bootstrap';
 import { useDispatch, useSelector } from 'react-redux';
 import { addCourse, deleteCourse } from "../features/course/CourseSlice";
 import type { RootState } from '../app/store'
 import { ToastContainer, toast } from 'react-toastify';
 import { fetchData } from "../features/Calendar/CalendarSlice";
+import map from "../assets/images/map.png"
 
 export default function Main() {
 
@@ -102,11 +103,13 @@ export default function Main() {
    
     
   return <>
-    <Container fluid >
+    <Container fluid className="p-0">
       <ToastContainer/>
-      <Header totalPrice={totalPrice} show={show}/>
+      <Header/>
+      <p className="text-center text-uppercase text-dark fs-2 pt-5 fw-bold">Calendrier</p>
+      <MainTop totalPrice={totalPrice} show={show}/>
 
-      <Table striped bordered hover responsive size="sm" className="my-5">
+      <Table striped bordered hover responsive size="sm" className="my-5 container">
         <thead style={{ backgroundColor: "#0c2461", color: "white" }}>
           <tr className="fs-3">
             <th>Horaires</th>
@@ -183,8 +186,11 @@ export default function Main() {
           ))}
         </tbody>
       </Table>
-
-      <Footer />
+      <p className="text-center text-danger fs-5 pb-5 ">Choisissez les cours et cliquer sur je m'inscris pour procéder à l'inscription</p>
+      <MainEnd />
+      <img src={map} alt="" />
+     
+     
           
       {courses.map(course => (
         <li key={course.id}>
