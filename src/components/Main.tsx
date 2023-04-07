@@ -7,7 +7,8 @@ import { addCourse, deleteCourse } from "../features/course/CourseSlice";
 import type { RootState } from '../app/store'
 import { ToastContainer, toast } from 'react-toastify';
 import { fetchData } from "../features/Calendar/CalendarSlice";
-import map from "../assets/images/map.png"
+import CustomHr from "./CustomHr";
+import Map from "./Map";
 
 export default function Main() {
 
@@ -103,7 +104,7 @@ export default function Main() {
    
     
   return <>
-    <Container fluid className="p-0">
+    <Container fluid className="p-0 " style={{ overflowX: 'auto' }} >
       <ToastContainer/>
       <Header/>
       <p className="text-center text-uppercase text-dark fs-2 pt-5 fw-bold">Calendrier</p>
@@ -187,16 +188,10 @@ export default function Main() {
         </tbody>
       </Table>
       <p className="text-center text-danger fs-5 pb-5 ">Choisissez les cours et cliquer sur je m'inscris pour procéder à l'inscription</p>
-      <MainEnd />
-      <img src={map} alt="" />
+      <MainEnd  />
+      <Map/>
+      <Footer/>
      
-     
-          
-      {courses.map(course => (
-        <li key={course.id}>
-          {course.name} - ${course.price}
-        </li>
-      ))}
 
 
 

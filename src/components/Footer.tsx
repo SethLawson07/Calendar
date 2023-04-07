@@ -2,6 +2,8 @@ import { useState } from 'react';
 import { Container, Form, Row, Col,Button } from 'react-bootstrap';
 import { ToastContainer, toast } from 'react-toastify';
 import logo from "../assets/images/logo1.jpg"
+import * as Icon from "react-bootstrap-icons"
+import CustomHr from './CustomHr';
 
 function MainEnd() {
 
@@ -98,23 +100,44 @@ function MainEnd() {
 }
 
 
-function Footer () {
-
-    return (
-      <Container fluid >
-      <Row style={{ backgroundColor: '#0c2461' }} >
-        <Col xs={12} md={4} className="text-white order-first my-2 pl-5 " >
-          <img src={logo} alt="Logo" width={200} height={200}/>
-          <hr style={{ width: 50, fontSize:15 }} />
-          <p className="fs-5">Dos Con Dos </p>
+function Footer() {
+  return (
+    <Container fluid style={{ backgroundColor: "#0c2461" }} className="text-white">
+      <Row className="align-items-center justify-content-center">
+        <Col xs={12} sm={6} md={6} className="text-white order-first my-5 d-flex flex-column align-items-center">
+          <img src={logo} alt="Logo" width={200} height={200} />
+          <CustomHr width="10%" height="2px" color="white" />
+          <p className="fs-5 ml-5">Dos Con Dos </p>
         </Col>
-        <Col xs={12} md={8} className=" my-2 ">
-       
+        <Col xs={12} sm={6} md={6} className="my-5 ">
+          <p className='text-uppercase'>Contactez-nous</p>
+          <CustomHr width="10%" height="1px" color="white" />
+          <p>
+            <Icon.PinMapFill /> 2323 Rue Galvani, Québec, QC, CA G1N 4H7
+          </p>
+          <CustomHr width="50%" height="1px" color="white" />
+          <p>
+            <Icon.TelephoneFill /> 4189328666
+          </p>
+          <CustomHr width="50%" height="1px" color="white" />
+          <p>
+            <Icon.EnvelopeFill /> info@doscondos.com
+          </p>
         </Col>
       </Row>
-      </Container>
- )   
+      <CustomHr width="100%" height="2px" color="white" />
+      <Row className="mx-5 my-2">
+        <Col xs={12} sm={8}>
+          <p>Dos Con Dos © {new Date().getFullYear()} </p>
+        </Col>
+        <Col xs={12} sm={4} className="d-flex justify-content-end">
+          <Icon.Facebook size={25} />
+        </Col>
+      </Row>
+    </Container>
+  );
 }
+
 
 
 export {MainEnd,Footer}
