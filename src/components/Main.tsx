@@ -3,9 +3,11 @@ import {MainTop,Header }from "./Header";
 import {MainEnd,Footer} from "./Footer";
 import { Table, Container, Button } from 'react-bootstrap';
 import { useDispatch, useSelector } from 'react-redux';
+import { AnyAction } from 'redux';
 import { addCourse, deleteCourse } from "../features/course/CourseSlice";
 import type { RootState } from '../app/store'
 import { ToastContainer, toast } from 'react-toastify';
+import { ThunkDispatch } from 'redux-thunk';
 import { fetchData } from "../features/Calendar/CalendarSlice";
 import CustomHr from "./CustomHr";
 import Map from "./Map";
@@ -13,9 +15,11 @@ import Map from "./Map";
 export default function Main() {
 
  // const [data, setData] = useState(null);
-  const dispatch = useDispatch();
+ // const dispatch = useDispatch();
+ const dispatch: ThunkDispatch<any, any, AnyAction> = useDispatch();
+
   const courses = useSelector((state: RootState) => state.course.courses)
-  const data = useSelector((state) => state.calendar.data);
+  const data = useSelector((state: RootState) => state.calendar.data);
   const [selectedMatieres, setSelectedMatieres] = useState({});
   var [totalPrice, setTotalPrice] = useState(0);
   const [show, setShow] = useState(false);
