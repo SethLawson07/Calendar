@@ -11,6 +11,7 @@ import { ThunkDispatch } from 'redux-thunk';
 import { fetchData } from "../features/Calendar/CalendarSlice";
 import CustomHr from "./CustomHr";
 import Map from "./Map";
+import "../assets/css/style.css"
 
 export default function Main() {
 
@@ -31,10 +32,10 @@ export default function Main() {
   */
   const remove = (matiere) =>{
     dispatch(deleteCourse(matiere.id));
-    toast.info(matiere.nom+" course successfully canceled.", {
-      position: "top-center",
+   /* toast.info(matiere.nom+" course successfully canceled.", {
+      position: "bottom-left",
    
-    });
+    });*/
   }
 
  /**
@@ -43,10 +44,10 @@ export default function Main() {
   */
   const add = (matiere) =>{
     dispatch(addCourse({ id: matiere.id, name: matiere.nom, price: matiere.prix }));
-    toast.success(matiere.nom+" course successfully added.", {
-      position: "top-center",
+   /* toast.success(matiere.nom+" course successfully added.", {
+      position: "top-left",
    
-    });
+    });*/
   }
 
   /** Check if a subject is selected for a given day and time.
@@ -74,7 +75,7 @@ export default function Main() {
     const index = selectedMatieresForHeure.findIndex(m => m.id === matiere.id);
     
     if (selectedMatieresForHeure.length > 0 && !selectedMatieresForHeure.some(m => m.id === matiere.id)) {
-      toast.error("une autre matière a déjà été sélectionnée pour cette heure.", {position:"top-center"})
+      toast.error("une autre matière a déjà été sélectionnée pour cette heure.", {position:"bottom-right"})
       return; }
      
 
@@ -114,9 +115,9 @@ export default function Main() {
       <p className="text-center text-uppercase text-dark fs-2 pt-5 fw-bold">Calendrier</p>
      
       <MainTop totalPrice={totalPrice}/>
-      <Table striped bordered hover responsive size="sm" className="my-5 container">
+      <Table striped bordered hover className="my-5 container table-custom">
         <thead style={{ backgroundColor: "#0c2461", color: "white" }}>
-          <tr className="fs-3">
+          <tr className="fs-5">
             <th>Horaires</th>
             {data.jours.map((jour) => (
               <th
@@ -129,7 +130,7 @@ export default function Main() {
           </tr>
         </thead>
         <tbody>
-          {data.jours[0].cours.map((cours, index) => (
+          {data.jours[1].cours.map((cours, index) => (
             <tr key={index}>
               <td>{cours.heure}</td>
               {data.jours.map((jour) => {
@@ -143,7 +144,7 @@ export default function Main() {
                         {matieres.map((matiere) => (
                           <Button
                             key={matiere.id}
-                            className="my-1"
+                            className="my-1 stretched-button"
                             variant={
                               matiereIsSelected(
                                 matiere,
@@ -175,14 +176,15 @@ export default function Main() {
                               {matiere.nom}
                             </span>{" "}
                             :{" "}
-                            <span className=" font-monospace text-secondary">
+                            <span className=" font-monospace text-secondary fs-10">
                               {matiere.prix} USD{" "}
                             </span>
                           </Button>
                         ))}
                       </div>
                     ) : (
-                      <div>&nbsp;</div>
+                    
+                      <div className="not"></div>
                     )}
                   </td>
                 );

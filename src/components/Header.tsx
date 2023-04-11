@@ -23,7 +23,7 @@ function Header() {
     <Navbar.Brand href="#home" className='text-secondary fs-4 fw-bold'></Navbar.Brand>
         <Navbar.Toggle aria-controls="basic-navbar-nav" />
         <Navbar.Collapse id="basic-navbar-nav">    
-        <Nav className="mx-auto text-uppercase fs-6 text-dark pb- ">
+        <Nav className="mx-auto text-uppercase fs-6 text-dark ">
             <Nav.Link href="#" >Accueil</Nav.Link>
             <Nav.Link href="#" >Calendrier</Nav.Link>
             <Nav.Link href="#" >Contact</Nav.Link>

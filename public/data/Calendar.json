@@ -3,26 +3,10 @@
     {
       "nom": "Lundi",
       "cours": [
-        {
-          "heure": "18:10",
-          "matieres": [
-            
-          ]
-        },
-        {
-          "heure": "19:15",
-          "matieres": [
-           
-          ]
-        },
-        {
-          "heure": "20:25",
-          "matieres": [
-
-          ]
-        }
+       
       ]
     },
+    
 
     {
       "nom": "Mardi",
