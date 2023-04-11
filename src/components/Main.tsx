@@ -108,8 +108,8 @@ export default function Main() {
       <ToastContainer/>
       <Header/>
       <p className="text-center text-uppercase text-dark fs-2 pt-5 fw-bold">Calendrier</p>
-      <MainTop totalPrice={totalPrice} show={show}/>
-
+     
+      <MainTop totalPrice={totalPrice}/>
       <Table striped bordered hover responsive size="sm" className="my-5 container">
         <thead style={{ backgroundColor: "#0c2461", color: "white" }}>
           <tr className="fs-3">
