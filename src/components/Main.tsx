@@ -112,10 +112,10 @@ export default function Main() {
     <Container fluid className="p-0 " style={{ overflowX: 'auto' }} >
       <ToastContainer/>
       <Header/>
-      <p className="text-center text-uppercase text-dark fs-2 pt-5 fw-bold">Calendrier</p>
+      <p className="text-center text-uppercase text-dark fs-2 pt-5 fw-bold" id="timetable">Calendrier</p>
      
-      <MainTop totalPrice={totalPrice}/>
-      <Table striped bordered hover className="my-5 container table-custom">
+      <MainTop totalPrice={totalPrice} />
+      <Table striped bordered hover className="my-5 container table-custom " >
         <thead style={{ backgroundColor: "#0c2461", color: "white" }}>
           <tr className="fs-5">
             <th>Horaires</th>

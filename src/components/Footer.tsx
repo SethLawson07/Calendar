@@ -26,7 +26,7 @@ function MainEnd() {
 
 
   return (
-    <Container >
+    <Container id='contact'>
        <ToastContainer/>
       <Row  >
         <Col xs={12} md={4} className="text-white order-first my-2 " style={{ backgroundColor: '#0c2461' }}>

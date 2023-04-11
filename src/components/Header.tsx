@@ -25,8 +25,8 @@ function Header() {
         <Navbar.Collapse id="basic-navbar-nav">    
         <Nav className="mx-auto text-uppercase fs-6 text-dark ">
             <Nav.Link href="#" >Accueil</Nav.Link>
-            <Nav.Link href="#" >Calendrier</Nav.Link>
-            <Nav.Link href="#" >Contact</Nav.Link>
+            <Nav.Link href="#timetable" >Calendrier</Nav.Link>
+            <Nav.Link href="#contact" >Contact</Nav.Link>
             <Nav.Link href="#" >Se connecter / s'inscrire</Nav.Link>
         </Nav>
         </Navbar.Collapse>
@@ -86,16 +86,18 @@ function ControlledCarousel() {
     <Carousel  activeIndex={index} onSelect={handleSelect}>
       <Carousel.Item>
         <img
-          className="d-block w-100"
+          className="d-block w-100 "
           src={img1}
           alt="First slide"
+
         />
       </Carousel.Item>
       <Carousel.Item>
         <img
-          className="d-block w-100"
+          className="d-block w-100 "
           src={img2}
           alt="Second slide"
+        
         />
       </Carousel.Item>
     </Carousel>
