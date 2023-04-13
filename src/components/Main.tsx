@@ -8,7 +8,7 @@ import { addCourse, deleteCourse } from "../features/course/CourseSlice";
 import type { RootState } from '../app/store'
 import { ToastContainer, toast } from 'react-toastify';
 import { ThunkDispatch } from 'redux-thunk';
-import { fetchData } from "../features/Calendar/CalendarSlice";
+import { fetchCalendarData } from "../features/Calendar/CalendarSlice";
 import CustomHr from "./CustomHr";
 import Map from "./Map";
 import "../assets/css/style.css"
@@ -20,10 +20,12 @@ export default function Main() {
  const dispatch: ThunkDispatch<any, any, AnyAction> = useDispatch();
 
   const courses = useSelector((state: RootState) => state.course.courses)
-  const data = useSelector((state: RootState) => state.calendar.data);
+ // const data = useSelector((state: RootState) => state.calendar.data);
+  const { data, loading, error } = useSelector((state: RootState) => state.calendar);
   const [selectedMatieres, setSelectedMatieres] = useState({});
   var [totalPrice, setTotalPrice] = useState(0);
   const [show, setShow] = useState(false);
+
 
 
 /**
@@ -94,21 +96,16 @@ export default function Main() {
    
   };
 
- 
-  
+
   useEffect(() => {
-    dispatch(fetchData());
+      dispatch(fetchCalendarData());
   }, [dispatch]);
 
-  
+  const parsedData = JSON.parse(data);
 
-  if (!data) {
-    return <p>Loading data...</p>;
-  }
-
-   
-    
   return <>
+  {
+     parsedData?.jours ?
     <Container fluid className="p-0 " style={{ overflowX: 'auto' }} >
       <ToastContainer/>
       <Header/>
@@ -119,7 +116,9 @@ export default function Main() {
         <thead style={{ backgroundColor: "#0c2461", color: "white" }}>
           <tr className="fs-5">
             <th>Horaires</th>
-            {data.jours.map((jour) => (
+          
+
+            {parsedData.jours.map((jour) => (
               <th
                 key={jour.nom}
                 className="text-center font-monospace"
@@ -130,10 +129,10 @@ export default function Main() {
           </tr>
         </thead>
         <tbody>
-          {data.jours[1].cours.map((cours, index) => (
+          {parsedData.jours[1].cours.map((cours, index) => (
             <tr key={index}>
               <td>{cours.heure}</td>
-              {data.jours.map((jour) => {
+              {parsedData.jours.map((jour) => {
                 const matieres = jour.cours.find(
                   (c) => c.heure === cours.heure
                 )?.matieres;
@@ -172,12 +171,12 @@ export default function Main() {
                               minWidth: "150px",
                             }}
                           >
-                            <span className="fw-semibold ">
+                            <span className="font-monospace text-secondary fs-7">
                               {matiere.nom}
                             </span>{" "}
-                            :{" "}
+                            {" "}
                             <span className=" font-monospace text-secondary fs-10">
-                              {matiere.prix} USD{" "}
+                             
                             </span>
                           </Button>
                         ))}
@@ -198,10 +197,9 @@ export default function Main() {
       <Map/>
       <Footer/>
      
-
-
-
-    </Container>
+    </Container> : <p>Loading data...</p>
+  }
+    
 
 
   </>

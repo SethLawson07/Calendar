@@ -1,10 +1,15 @@
 import { createSlice, createAsyncThunk } from '@reduxjs/toolkit';
+import { fetchDanceData, fetchProgramData, formatDanceData, formatProgramData, displayData } from './CalendarData';
 
-const fetchData = createAsyncThunk('calendar/fetchData', async () => {
+const fetchCalendarData = createAsyncThunk('calendar/fetchCalendarData', async () => {
   try {
-    const response = await fetch("./data/Calendar.json");
-    const jsonData = await response.json();
-    return jsonData;
+    const danceData = await fetchDanceData();
+    const programData = await fetchProgramData();
+    const formattedDanceData = formatDanceData(danceData);
+    const formattedProgramData = formatProgramData(programData, formattedDanceData);
+    const data = displayData(formattedProgramData);
+
+    return data; // assurez-vous que les données sont retournées ici
   } catch (error) {
     console.error("Erreur lors de la récupération des données du calendrier", error);
     return null;
@@ -18,23 +23,33 @@ const calendarSlice = createSlice({
     loading: false,
     error: null
   },
-  reducers: {},
+  reducers: {
+    setData: (state, action) => {
+      state.data = action.payload;
+    },
+    setLoading: (state, action) => {
+      state.loading = action.payload;
+    },
+    setError: (state, action) => {
+      state.error = action.payload;
+    }
+  },
   extraReducers: (builder) => {
     builder
-      .addCase(fetchData.pending, (state) => {
+      .addCase(fetchCalendarData.pending, (state) => {
         state.loading = true;
+        state.error = null;
       })
-      .addCase(fetchData.fulfilled, (state, action) => {
+      .addCase(fetchCalendarData.fulfilled, (state, action) => {
         state.loading = false;
-        state.data = action.payload;
+        state.data = action.payload; // assurez-vous que le state est mis à jour avec les données ici
       })
-      .addCase(fetchData.rejected, (state, action) => {
+      .addCase(fetchCalendarData.rejected, (state, action) => {
         state.loading = false;
         state.error = action.error.message;
       });
-  },
+  }
 });
 
-
 export default calendarSlice.reducer;
-export { fetchData };
+export { fetchCalendarData };
