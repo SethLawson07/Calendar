@@ -9,7 +9,7 @@ const fetchCalendarData = createAsyncThunk('calendar/fetchCalendarData', async (
     const formattedProgramData = formatProgramData(programData, formattedDanceData);
     const data = displayData(formattedProgramData);
 
-    return data; // assurez-vous que les données sont retournées ici
+    return data; 
   } catch (error) {
     console.error("Erreur lors de la récupération des données du calendrier", error);
     return null;
@@ -42,7 +42,7 @@ const calendarSlice = createSlice({
       })
       .addCase(fetchCalendarData.fulfilled, (state, action) => {
         state.loading = false;
-        state.data = action.payload; // assurez-vous que le state est mis à jour avec les données ici
+        state.data = action.payload; 
       })
       .addCase(fetchCalendarData.rejected, (state, action) => {
         state.loading = false;
