@@ -39,7 +39,7 @@ async function fetchDanceData() {
     return data;
   }
 
-  async function fetchProgramData() {
+async function fetchProgramData() {
     const response = await fetch(API_URL, {
       method: 'POST',
       headers: {
@@ -58,6 +58,7 @@ async function fetchDanceData() {
     });
   }
 
+  
   function formatProgramData(programData, danceData) {
     programData.forEach(cours => {
         const heure = cours.start_time;
@@ -78,8 +79,6 @@ async function fetchDanceData() {
   }
   
   function displayData(days) {
-   // console.log(JSON.stringify({jours: days}));
-
     return JSON.stringify({jours: days})
   }
 
@@ -95,10 +94,5 @@ async function fetchDanceData() {
     }
   }
 
+export { fetchDanceData, fetchProgramData, formatDanceData, formatProgramData ,displayData,main}
   
-
-  export { fetchDanceData, fetchProgramData, formatDanceData, formatProgramData ,displayData,main}
-  
- 
-  
-  //main();
