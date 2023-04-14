@@ -8,7 +8,8 @@
     "build": "tsc --noEmit && vite build",
     "preview": "vite preview",
     "predeploy": "npm run build",
-    "deploy": "gh-pages -d dist"
+    "deploy": "gh-pages -d dist",
+    "oklm":"npm run dev"
   },
   "dependencies": {
     "@react-google-maps/api": "^2.18.1",

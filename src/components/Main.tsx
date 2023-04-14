@@ -80,13 +80,19 @@ export default function Main() {
       toast.error("une autre matière a déjà été sélectionnée pour cette heure.", {position:"bottom-right"})
       return; }
      
+      const DEFAULT_PRICE = 50;
+      let price = parseInt(matiere.prix);
 
+      if (isNaN(price) || price <= 0) {
+        price = DEFAULT_PRICE;
+      }
+      
     if (index !== -1) {
       selectedMatieresForHeure.splice(index, 1);
-      totalPrice -= matiere.prix;
+      totalPrice -= price;
     } else {
       selectedMatieresForHeure.push(matiere);
-      totalPrice += matiere.prix;
+      totalPrice += price;
     }
 
     updatedMatieres[heureKey] = selectedMatieresForHeure;
@@ -152,7 +158,7 @@ export default function Main() {
                               minWidth: "150px",
                             }}
                           >
-                            <span className="font-monospace text-secondary fs-7">
+                            <span className="font-monospace  fs-7">
                               {matiere.nom}
                             </span>{" "}
                             {" "}
