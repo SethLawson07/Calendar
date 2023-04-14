@@ -40,34 +40,64 @@ function Header() {
 function MainTop({ totalPrice }) {
   return (
     <Container>
-      <Row>
-        <Col xs={4} className="text-left text-secondary fs-4 fw-bold">
-          SESSION DECEMBRE 2022
-        </Col>
-        <Col xs={4} className="text-center text-dark fs-5">
-          4 déc. 2022 - 19 jan. 2023
-        </Col>
-        <Col xs={2} className="text-right" md={{ offset: 2 }}>
-          {totalPrice == 0 ? (
-            <Button
-              style={{ backgroundColor: "#0c2461" }}
-              className="fw-bold"
-              disabled
-            >
-              S'inscrire
-            </Button>
-          ) : (
-            <Button
-              style={{ backgroundColor: "#0c2461" }}
-              disabled
-              className="fw-bold pr-5"
-            >
-              S'inscrire(${totalPrice})
-            </Button>
-          )}
-        </Col>
-      </Row>
-    </Container>
+    <Row className="d-block d-sm-none">
+      <Col xs={12} className="text-center text-secondary fs-4 fw-bold mb-3">
+        SESSION DECEMBRE 2022
+      </Col>
+      <Col xs={12} className="text-center text-dark fs-5 mb-3">
+        4 déc. 2022 - 19 jan. 2023
+      </Col>
+      <Col xs={12} className="text-center mb-3">
+        {totalPrice == 0 ? (
+          <Button
+            style={{ backgroundColor: "#0c2461" }}
+            className="fw-bold"
+            disabled
+          >
+            S'inscrire
+          </Button>
+        ) : (
+          <Button
+            style={{ backgroundColor: "#0c2461" }}
+            disabled
+            className="fw-bold pr-5"
+          >
+            S'inscrire (${totalPrice})
+          </Button>
+        )}
+      </Col>
+    </Row>
+    
+    <Row className="d-none d-sm-flex">
+      <Col md={4} className="text-left text-secondary fs-4 fw-bold">
+        SESSION DECEMBRE 2022
+      </Col>
+      <Col md={4} className="text-center text-dark fs-5">
+        4 déc. 2022 - 19 jan. 2023
+      </Col>
+      <Col md={{ span: 2, offset: 2 }} className="text-right">
+        {totalPrice == 0 ? (
+          <Button
+            style={{ backgroundColor: "#0c2461" }}
+            className="fw-bold"
+            disabled
+          >
+            S'inscrire
+          </Button>
+        ) : (
+          <Button
+            style={{ backgroundColor: "#0c2461" }}
+            disabled
+            className="fw-bold pr-5"
+          >
+            S'inscrire (${totalPrice})
+          </Button>
+        )}
+      </Col>
+    </Row>
+  </Container>
+  
+
   );
 }
 
