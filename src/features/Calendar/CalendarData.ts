@@ -1,10 +1,8 @@
-//import 'dotenv/config';
+import 'dotenv/config';
 
-//const API_URL = process.env.API_URL;
-//const API_KEY = process.env.API_KEY;
+const API_URL = process.env.API_URL;
+const API_KEY = process.env.API_KEY;
 
-const API_URL = 'https://dance.eleisdigital.com/breeze-server/db-api/global/custom-request/json'
-const API_KEY = 'b47e8c19-9e29-4287-acb1-4f34481402a0'
 
 const request_dance = {
     action: "select",
