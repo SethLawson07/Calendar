@@ -112,86 +112,65 @@ export default function Main() {
       <p className="text-center text-uppercase text-dark fs-2 pt-5 fw-bold" id="timetable">Calendrier</p>
      
       <MainTop totalPrice={totalPrice} />
-      <Table striped bordered hover className="my-5 container table-custom " >
-        <thead style={{ backgroundColor: "#0c2461", color: "white" }}>
-          <tr className="fs-5">
-            <th>Horaires</th>
-          
+      <Table striped bordered hover className="my-5 container table-custom" responsive>
+  <thead style={{ backgroundColor: "#0c2461", color: "white" }}>
+    <tr className="fs-5">
+      <th>Horaires</th>
+      {parsedData.jours.map((jour) => (
+        <th key={jour.nom} className="text-center font-monospace">
+          {jour.nom}
+        </th>
+      ))}
+    </tr>
+  </thead>
+  <tbody>
+    {parsedData.jours[1].cours.map((cours, index) => (
+      <tr key={index}>
+        <td>{cours.heure}</td>
+        {parsedData.jours.map((jour) => {
+          const matieres = jour.cours.find((c) => c.heure === cours.heure)?.matieres;
+          return (
+            <td key={jour.nom} className="col">
+              {matieres ? (
+                <div>
+                  {matieres.map((matiere) => (
+                    <Button
+                      key={matiere.id}
+                      className="my-1 stretched-button"
+                      variant={
+                        matiereIsSelected(matiere, jour.nom, cours.heure)
+                          ? "danger"
+                          : "light"
+                      }
+                      onClick={() =>
+                        onMatiereClick(matiere, jour.nom, cours.heure)
+                      }
+                      style={{
+                        color: matiereIsSelected(matiere, jour.nom, cours.heure)
+                          ? "white"
+                          : "",
+                        minWidth: "150px",
+                      }}
+                    >
+                      <span className="font-monospace text-secondary fs-7">
+                        {matiere.nom}
+                      </span>{" "}
+                      {" "}
+                      <span className=" font-monospace text-secondary fs-10"></span>
+                    </Button>
+                  ))}
+                </div>
+              ) : (
+                <div className="not"></div>
+              )}
+            </td>
+          );
+        })}
+      </tr>
+    ))}
+  </tbody>
+</Table>
 
-            {parsedData.jours.map((jour) => (
-              <th
-                key={jour.nom}
-                className="text-center font-monospace"
-              >
-                {jour.nom}
-              </th>
-            ))}
-          </tr>
-        </thead>
-        <tbody>
-          {parsedData.jours[1].cours.map((cours, index) => (
-            <tr key={index}>
-              <td>{cours.heure}</td>
-              {parsedData.jours.map((jour) => {
-                const matieres = jour.cours.find(
-                  (c) => c.heure === cours.heure
-                )?.matieres;
-                return (
-                  <td key={jour.nom}>
-                    {matieres ? (
-                      <div>
-                        {matieres.map((matiere) => (
-                          <Button
-                            key={matiere.id}
-                            className="my-1 stretched-button"
-                            variant={
-                              matiereIsSelected(
-                                matiere,
-                                jour.nom,
-                                cours.heure
-                              )
-                                ? "danger"
-                                : "light"
-                            }
-                            onClick={() =>
-                              onMatiereClick(
-                                matiere,
-                                jour.nom,
-                                cours.heure
-                              )
-                            }
-                            style={{
-                              color: matiereIsSelected(
-                                matiere,
-                                jour.nom,
-                                cours.heure
-                              )
-                                ? "white"
-                                : "",
-                              minWidth: "150px",
-                            }}
-                          >
-                            <span className="font-monospace text-secondary fs-7">
-                              {matiere.nom}
-                            </span>{" "}
-                            {" "}
-                            <span className=" font-monospace text-secondary fs-10">
-                             
-                            </span>
-                          </Button>
-                        ))}
-                      </div>
-                    ) : (
-                    
-                      <div className="not"></div>
-                    )}
-                  </td>
-                );
-              })}
-            </tr>
-          ))}
-        </tbody>
-      </Table>
       <p className="text-center text-danger fs-5 pb-5 ">Choisissez les cours et cliquer sur je m'inscris pour procéder à l'inscription</p>
       <MainEnd  />
       <Map/>
